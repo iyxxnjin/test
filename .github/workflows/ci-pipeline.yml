@@ -1,0 +1,29 @@
+name: Team16 CI Pipeline # 작업의 이름이에요
+
+# main 브랜치에 push나 pull request 발생 시 이 workflow가 실행
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Ubuntu OS에서 실행
+
+    steps:
+      - name: Checkout code # 코드 가져오기
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js # Node.js 환경 설정
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install dependencies # 패키지를 설치
+        run: npm install
+
+      - name: Run tests # 테스트를 실행
+        run: npm test
