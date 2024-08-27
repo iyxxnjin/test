@@ -1,4 +1,4 @@
-name: Team16 CI Pipeline # 작업의 이름이에요
+name: Team16 CI Pipeline
 
 # main 브랜치에 push나 pull request 발생 시 이 workflow가 실행
 on:
