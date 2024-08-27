@@ -93,7 +93,7 @@ export default function Register() {
                       </p>}
                     {registrationError && <p style={{ color: 'red' }}>{registrationError}</p>}
                     <hr className="divider" />
-                    <div className="input-container">
+                    {/* <div className="input-container">
                         <button type="button" className="social-login google-login">
                             구글로 시작하기
                         </button>
@@ -103,7 +103,7 @@ export default function Register() {
                         <button type="button" className="social-login naver-login">
                             네이버로 시작하기
                         </button>
-                    </div>
+                    </div> */}
                 </form>
             </div>
         </div>
