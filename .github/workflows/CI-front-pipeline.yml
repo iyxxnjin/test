@@ -40,7 +40,11 @@ jobs:
           push: true
           # SHA 해시를 사용해 커밋별로 고유한 태그를 생성하고 푸시
           tags: |
+<<<<<<< HEAD
             ${{ secrets.DOCKER_REPOSITORY_FRONTEND }}:latest
+=======
+            ${{ secrets.DOCKER_REPOSITORY_FRONTEND }}:latest 
+>>>>>>> c14b430 (Chore: CI pipeline 수정)
             ${{ secrets.DOCKER_REPOSITORY_FRONTEND }}:${{ github.sha }}
 
         # 푸시된 docker 이미지를 다시 docker hub에서 pull해서 이미지가 제대로 업로드 되었는지 확인
