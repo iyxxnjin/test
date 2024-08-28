@@ -35,19 +35,15 @@ jobs:
         with:
           context: ./front/healthcare
           file: ./front/healthcare/Dockerfile
-          platforms: linux/arm64, linux/arm64
+          platforms: linux/arm64
           # 이미지 푸시
           push: true
           # SHA 해시를 사용해 커밋별로 고유한 태그를 생성하고 푸시
           tags: |
-<<<<<<< HEAD
             ${{ secrets.DOCKER_REPOSITORY_FRONTEND }}:latest
-=======
-            ${{ secrets.DOCKER_REPOSITORY_FRONTEND }}:latest 
->>>>>>> c14b430 (Chore: CI pipeline 수정)
             ${{ secrets.DOCKER_REPOSITORY_FRONTEND }}:${{ github.sha }}
 
         # 푸시된 docker 이미지를 다시 docker hub에서 pull해서 이미지가 제대로 업로드 되었는지 확인
       - name: Verify Frontend Docker Hub
         # 이전 푸시한 커밋의 SHA 해시 태그로 이미지를 다운로드해 검증.
-        run: docker pull ${{ secrets.DOCKER_REPOSITORY_FRONTEND }}:${{ github.sha }}
+        run: docker pull --platform linux/arm64 ${{ secrets.DOCKER_REPOSITORY_FRONTEND }}:${{ github.sha }}
