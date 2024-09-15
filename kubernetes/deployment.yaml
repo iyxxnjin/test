@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: react-app-container
-          image: your-dockerhub-username/your-image-name:latest
+          image: yoonjini/mytest:latest
           ports:
             - containerPort: 80

@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment.yml
+  - service.yml
+
+namePrefix: myHealthcare
+
+commonLabels:
+  app: healthcare-frontend
+  environment: production
+
+images:
+  - name: yoonjini/test
+    newTag: latest
+
+configMapGenerator:
+  - name: frontend-config
+    behavior: merge # ConfigMap 이름 충돌을 방지
+    literals:
+      - API_URL=https://api.healthcare-app.com
+
+patchesStrategicMerge:
+  - deployment-patch.yaml
