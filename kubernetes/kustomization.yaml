@@ -5,7 +5,7 @@ resources:
   - deployment.yml
   - service.yml
 
-namePrefix: myHealthcare
+namePrefix: myHealthcare-
 
 commonLabels:
   app: healthcare-frontend
@@ -13,11 +13,11 @@ commonLabels:
 
 images:
   - name: yoonjini/test
-    newTag: latest
+    newTag: ${GITHUB_SHA} # GitHub Actions에서 sed 명령어로 대체된 커밋 SHA
 
 configMapGenerator:
   - name: frontend-config
-    behavior: merge # ConfigMap 이름 충돌을 방지
+    behavior: merge # ConfigMap 이름 충돌을 방지합니다.
     literals:
       - API_URL=https://api.healthcare-app.com
 
