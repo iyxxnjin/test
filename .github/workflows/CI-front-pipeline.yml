@@ -50,14 +50,14 @@ jobs:
       # kustomization.yaml 파일에서 이미지 태그 업데이트
       - name: Update image tag in kustomization.yaml
         run: |
-          sed -i "s/PLACEHOLDER_TAG/${{ github.sha }}/g" k8s/kustomization.yaml
+          sed -i "s/PLACEHOLDER_TAG/${{ github.sha }}/g" kubernetes/kustomization.yaml
 
       # 변경된 파일을 커밋하고 푸시
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "chore: update image tag to ${{ github.sha }}"
-          file_pattern: k8s/kustomization.yaml
+          file_pattern: kubernetes/kustomization.yaml
           branch: ${{ github.ref }}
           commit_user_name: GitHub Actions
           commit_user_email: actions@github.com
