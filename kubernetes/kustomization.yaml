@@ -17,7 +17,7 @@ images:
 
 configMapGenerator:
   - name: frontend-config
-    behavior: merge # ConfigMap 이름 충돌을 방지합니다.
+    behavior: merge # ConfigMap 이름 충돌을 방지
     literals:
       - API_URL=https://api.healthcare-app.com
 
